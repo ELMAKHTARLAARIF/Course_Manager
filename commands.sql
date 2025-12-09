@@ -1,3 +1,4 @@
+CREATE DATABASE IF NOT EXISTS cours_manager;
 CREATE DATABASE cours_manager;
 use cours_manager;
 CREATE TABLE courses (
