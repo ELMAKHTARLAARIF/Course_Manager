@@ -17,11 +17,11 @@ while ($row =  $result->fetch_assoc()) {
         <div class="actions">
             <a class="btn" onclick="showModalsections(<?= $row['id'] ?>)">View Section</a>
             <a class="btn delete" onclick="showAddSectionModal(<?= $row['id'] ?>)">Add Section</a>
-            <a href="#" class="btn edit">Edit</a>
+            <a href="courses_edit.php?id=<?= $row['id'] ?>" class="btn edit">Edit</a>
             <a href="#" class="btn delete">Delete</a>
         </div>
     </div>
 <?php
 }
-require_once "../cours/courses_create.php";
 ?>
+

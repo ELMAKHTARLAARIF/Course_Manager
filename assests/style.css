@@ -271,7 +271,7 @@ footer {
     gap: 10px;
     margin-top: 10px;
 } 
-/* Overlay */
+
 .course-sections-overlay {
     display: none;
     position: fixed;
@@ -282,12 +282,12 @@ footer {
     z-index: 1000;
 }
 
-/* Show modal */
+
 .course-sections-overlay.show {
     display: flex;
 }
 
-/* Modal box */
+
 .course-sections-box {
     background-color: var(--bg-200);
     padding: 20px 30px;
@@ -297,7 +297,6 @@ footer {
     box-shadow: 0 5px 20px rgba(0,0,0,0.3);
 }
 
-/* Sections list */
 .course-sections-list {
     list-style: none;
     padding: 0;
@@ -309,7 +308,6 @@ footer {
     border-bottom: 1px solid #ddd;
 }
 
-/* Close button */
 .course-sections-close-btn {
     display: block;
     margin: 15px auto 0 auto;
@@ -321,15 +319,13 @@ footer {
     cursor: pointer;
 }
 
-/* Optional: style the title */
 .course-sections-box h2 {
     margin-bottom: 12px;
     font-size: 20px;
     text-align: center;
 }
-/* Overlay */
 .add-section-overlay {
-    display: none; /* hidden by default */
+    display: none;
     position: fixed;
     inset: 0;
     background: rgba(0,0,0,0.5);
@@ -338,12 +334,10 @@ footer {
     z-index: 1000;
 }
 
-/* Show modal */
 .add-section-overlay.show {
     display: flex;
 }
 
-/* Modal box */
 .add-section-box {
     background: var(--bg-100);
     padding: 20px 30px;
@@ -353,7 +347,6 @@ footer {
     box-shadow: 0 5px 20px rgba(0,0,0,0.3);
 }
 
-/* Form styles */
 .add-section-form {
     display: flex;
     flex-direction: column;
@@ -369,7 +362,6 @@ footer {
     outline: none;
 }
 
-/* Buttons */
 .add-section-actions {
     display: flex;
     justify-content: flex-end;
@@ -395,7 +387,6 @@ footer {
     color: #fff;
 }
 
-/* Optional: modal title */
 .add-section-box h2 {
     margin-bottom: 12px;
     text-align: center;
