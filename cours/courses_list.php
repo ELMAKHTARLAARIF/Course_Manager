@@ -15,10 +15,9 @@ while ($row =  $result->fetch_assoc()) {
         <p class="level"><?= htmlspecialchars($row['level']) ?></p>
         <p class="desc"><?= htmlspecialchars($row['description']) ?></p>
         <div class="actions">
-            <a class="btn" onclick="showModalsections(<?= $row['id'] ?>)">View Section</a>
-            <a class="btn delete" onclick="showAddSectionModal(<?= $row['id'] ?>)">Add Section</a>
+            <a class="btn" href="../Sections/sections_by_course.php?id=<?= $row['id'] ?>">View Section</a>
             <a href="courses_edit.php?id=<?= $row['id'] ?>" class="btn edit">Edit</a>
-            <a href="#" class="btn delete">Delete</a>
+            <a href="courses_delete.php?id=<?= $row['id'] ?>" class="btn delete" >Delete</a>
         </div>
     </div>
 <?php

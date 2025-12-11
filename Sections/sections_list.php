@@ -23,7 +23,7 @@
             <div class="course-grid">
             <?php
     require_once '../Infrastructure/config.php';
-            $data= 'select * from sections';
+            $data= 'SELECT * FROM sections';
             $result = mysqli_query($conn, $data);
             if (!$result) {
                 die("Query failed: " . mysqli_error($conn));
@@ -34,42 +34,14 @@
                 <h2 class="title"><?php echo ($section['title']); ?></h2>
                 <p class="level"><?php echo ($section['content']); ?></p>
                 <p class="desc"><?php echo ($section['position']); ?></p>
-                <div class="actions">
-                    <a href="#" class="btn">View</a>
-                    <a href="#" class="btn edit">Edit</a>
-                    <a href="#" class="btn delete">Delete</a>
-                </div>
+
             </div>
     <?php
     }
     ?>
             </div>
     </section>
-    <div id="modal-overlay" class="modal-overlay">
-        <div class="modal">
-            <h2>Add New Section</h2>
 
-            <form action="#" method="POST" class="modal-form">
-                <label>Section Title</label>
-                <input type="text" name="title" required>
-
-                <label>Description</label>
-                <textarea name="description" rows="4" required></textarea>
-
-                <label>Level</label>
-                <select name="level" required>
-                    <option value="Beginner">Beginner</option>
-                    <option value="Intermediate">Intermediate</option>
-                    <option value="Advanced">Advanced</option>
-                </select>
-
-                <div class="modal-actions">
-                    <button type="button" class="btn small delete" onclick="closeModal()">Cancel</button>
-                    <button type="submit" class="btn primary small">Save</button>
-                </div>
-            </form>
-        </div>
-    </div>
     <?php require_once '../Infrastructure/footer.php';?>
 </body>
 

@@ -14,7 +14,6 @@ if ($_SERVER['REQUEST_METHOD'] === "GET") {
     }
 
     $id = $_GET["id"];
-
     $sql = "SELECT * FROM courses WHERE id = $id";
     $result = mysqli_query($conn, $sql);
 
@@ -59,8 +58,6 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     }
 }
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -113,7 +110,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         <button type="submit">Save Changes</button>
     </form>
 
-    <a href="../cours/courses_create.php" class="back-link"><- Back to Courses List</a>
+    <a href="./courses_create.php" class="back-link"><- Back to Courses List</a>
 </div>
 
     <?php require_once '../Infrastructure/footer.php'; ?>

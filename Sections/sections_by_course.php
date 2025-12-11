@@ -1,15 +1,75 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+require_once '../Infrastructure/config.php';
+if ($_SERVER["REQUEST_METHOD"] == "GET") {
+    $id = $_GET["id"];
+    $sql = "SELECT * FROM sections WHERE course_id = $id";
+    $result = mysqli_query($conn, $sql);
+    if (!$result) {
+        die("Query failed: " . mysqli_error($conn));
+    }
+    $getData = "SELECT * FROM courses WHERE id = $id";
+    $dataCours = mysqli_query($conn, $getData);
+    if (!$dataCours) {
+        die("Query failed: " . mysqli_error($conn));
+    }
+    $dataCours = mysqli_fetch_assoc($dataCours);
+}
+?>
 
-    $resultat = mysqli_query($conn,"SELECT * FROM sections");
- ?>
-<div id="course-sections-modal" class="course-sections-overlay">
-    <div class="course-sections-box">
-        <h2>Sections of This Course</h2>
-        <ul class="course-sections-list">
-            <li>Section 1: Introduction</li>
-            <li>Section 2: Basics</li>
-            <li>Section 3: Advanced Topics</li>
-        </ul>
-        <button class="course-sections-close-btn" onclick="closeSectionsModal()">Close</button>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Course Manager</title>
+    <link rel="stylesheet" href="../style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assests/style.css">
+    <script src="../assets/main.js" defer></script>
+</head>
+
+<body>
+
+    <?php require_once "../Infrastructure/header.php" ?>
+    <div id="course-sections" class="course-sections">
+        <div class="title-section-add-section-btn">
+            <?php if (empty($result))
+                echo "<h2>No Sections Found</h2>";
+            else {
+                echo "<h2>Course Sections</h2>";
+            }
+
+            ?>
+            <a href="../Sections/sections_create.php?id=<?= $dataCours['id'] ?>" class="btn primary">+ Add Section</a>
+        </div>
+        <div class="sections-box">
+            <?php foreach ($result as $section) { ?>
+
+                <div class="course-sections-box">
+                    <h3>Course title: <?php echo $dataCours['title'] ?></h3>
+                    <ul class="course-sections-list">
+                        <li>Section title: <?php echo $section['title'] ?></li>
+                        <li>Section content: <?php echo $section['content'] ?></li>
+                        <li>Section position: <?php echo $section['position'] ?></li>
+                    </ul>
+                    <div class="actions">
+                        <a href="#" class="btn">View</a>
+                        <a href="#" class="btn edit">Edit</a>
+                        <a href="#" class="btn delete">Delete</a>
+                    </div>
+                </div>
+
+
+            <?php } ?>
+        </div>
     </div>
-</div>
+
+
+
+    <?php require_once '../Infrastructure/footer.php'; ?>
+</body>
+
+</html>
