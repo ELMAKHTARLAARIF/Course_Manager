@@ -1,6 +1,12 @@
-
+const titleEror = document.querySelector(".title-error");
+const descEror = document.querySelector(".desc-error");
+const levelError = document.querySelector(".level-error");
 function openModal() {
     document.getElementById("modal-overlay").classList.add("show");
+    titleEror.textContent = "*";
+    descEror.textContent = "*"
+    levelError.textContent = "*";
+
 }
 function closeModal() {
     document.getElementById("modal-overlay").classList.remove("show");
@@ -39,9 +45,7 @@ saveBtn.addEventListener("click", (e) => {
     }
 
     if (isValid) {
-        titleEror.textContent = "*";
-        descEror.textContent = "*"
-        levelError.textContent="*";
+
         successMessage.style.display = "block";
         successMessage.style.color = "green";
         successMessage.textContent = "Course added successfully!";
@@ -55,13 +59,3 @@ saveBtn.addEventListener("click", (e) => {
     }
 
 });
-
-function showAddSectionModal(courseId) {
-    const addSectionModal = document.getElementById('add-section-modal');
-    if (addSectionModal) addSectionModal.classList.add('show');
-}
-
-function closeAddSectionModal() {
-    const addSectionModal = document.getElementById('add-section-modal');
-    if (addSectionModal) addSectionModal.classList.remove('show');
-}

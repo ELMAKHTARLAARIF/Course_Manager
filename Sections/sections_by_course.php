@@ -3,13 +3,13 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 require_once '../Infrastructure/config.php';
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
-    $id = $_GET["id"];
-    $sql = "SELECT * FROM sections WHERE course_id = $id";
+    $cour_id = $_GET["id"];
+    $sql = "SELECT * FROM sections WHERE course_id = $cour_id";
     $result = mysqli_query($conn, $sql);
     if (!$result) {
         die("Query failed: " . mysqli_error($conn));
     }
-    $getData = "SELECT * FROM courses WHERE id = $id";
+    $getData = "SELECT * FROM courses WHERE id = $cour_id";
     $dataCours = mysqli_query($conn, $getData);
     if (!$dataCours) {
         die("Query failed: " . mysqli_error($conn));
@@ -39,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
             <?php if (empty($result))
                 echo "<h2>No Sections Found</h2>";
             else {
-                echo "<h2>Course Sections</h2>";
+                echo "<h2>Cour Sections</h2>";
             }
 
             ?>
@@ -56,9 +56,8 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
                         <li>Section position: <?php echo $section['position'] ?></li>
                     </ul>
                     <div class="actions">
-                        <a href="#" class="btn">View</a>
-                        <a href="#" class="btn edit">Edit</a>
-                        <a href="#" class="btn delete">Delete</a>
+                        <a href="sections_edit.php?id=<?= $section['id']?>" class="btn edit">Edit</a>
+                        <a href="sections_delete.php?id=<?= $section['id']?>" class="btn delete">Delete</a>
                     </div>
                 </div>
 

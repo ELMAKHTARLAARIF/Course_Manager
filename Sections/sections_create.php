@@ -49,13 +49,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <form class="add-section-form" action="" method="POST">
                 <label for="section-title">Section Title</label>
                 <input type="text" id="section-title" name="title" placeholder="Enter section title">
-
+    
                 <label for="section-desc">content</label>
                 <textarea id="section-desc" name="content" rows="4" placeholder="Enter section Content"></textarea>
                 <label for="section-position">Position</label>
                 <input type="number" id="section-position" name="position" placeholder="Enter section position">
                 <div class="add-section-actions">
-                    <a href="../cours/courses_create.php" class="back-link"><- Back to Course Section</a>
+                    <a href="sections_by_course.php?id=<?= $id ?>" class="back-link"><- Back to Course Sections</a>
                             <button type="submit" class="add-section-save-btn">Save</button>
                 </div>
             </form>

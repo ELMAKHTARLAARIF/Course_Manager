@@ -31,7 +31,6 @@ if ($_SERVER['REQUEST_METHOD'] === "GET") {
 
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
-    $id = $_POST["id"];
     $title = $_POST["title"];
     $description = $_POST["description"];
     $level = $_POST["level"];

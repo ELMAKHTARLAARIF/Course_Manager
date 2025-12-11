@@ -264,8 +264,6 @@ footer {
     font-size: 18px;
     font-weight: 500;
     pointer-events: none;
-    margin-left: 160px;
-
     animation: er 1s ease forwards;
 }
 @keyframes er {
