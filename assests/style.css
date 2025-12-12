@@ -181,7 +181,10 @@ body {
     font-size: 14px;
     min-height: 54px;
 }
-
+.cour-image{
+    width: 80px;
+    height: 80px;
+}
 .actions {
     margin-top: 18px;
     display: flex;

@@ -49,11 +49,11 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
             <?php foreach ($result as $section) { ?>
 
                 <div class="course-sections-box">
-                    <h3>Course title: <?php echo $dataCours['title'] ?></h3>
+                    <h3>Course title : <?php echo $dataCours['title'] ?></h3>
                     <ul class="course-sections-list">
-                        <li>Section title: <?php echo $section['title'] ?></li>
-                        <li>Section content: <?php echo $section['content'] ?></li>
-                        <li>Section position: <?php echo $section['position'] ?></li>
+                        <li>title : <?php echo $section['title'] ?></li>
+                        <li>Content : <?php echo $section['content'] ?></li>
+                        <li>Position : <?php echo $section['position'] ?></li>
                     </ul>
                     <div class="actions">
                         <a href="sections_edit.php?id=<?= $section['id']?>" class="btn edit">Edit</a>

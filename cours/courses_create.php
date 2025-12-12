@@ -25,16 +25,26 @@
         $title = trim($_POST["title"]);
         $description = trim($_POST["description"]);
         $level = trim($_POST["level"]);
+        $file_name = time() . "_" . basename($_FILES["image"]["name"]);
 
+        $tempname = $_FILES['image']['tmp_name'];
+        echo $tempname;
+        $folder = '../uploads/'.$file_name;
         if (empty($title))
             $isvalid = false;
         if (empty($description)) 
             $isvalid = false;
         if(!in_array($_POST['level'],["Beginner","Intermediate","Advanced"]))
             $isvalid==false;
+            if (!empty($file_name)) {
+        if (!move_uploaded_file($tempname, $folder)) {
+            echo "Image upload failed!";
+            $isvalid = false;
+        }
+    }
         if ($isvalid) {
-            $sql = "INSERT INTO courses (title, description, level)
-            VALUES ('$title', '$description', '$level')";
+            $sql = "INSERT INTO courses (title, description, level,image)
+            VALUES ('$title', '$description', '$level','$file_name')";
             if (mysqli_query($conn, $sql)) {
                 header("Location: " . $_SERVER['PHP_SELF']);
                 exit();
@@ -65,7 +75,7 @@
         <div class="modal">
             <h2>Add New Course</h2>
 
-            <form method="POST" class="modal-form" id="courseForm">
+            <form method="POST" class="modal-form" id="courseForm" enctype="multipart/form-data">
                 <label>Course Title</label>
                 <input type="text" name="title" class="input" id="course-title"><span class="error title-error"  >*</span>
                 <label>Description</label>
@@ -77,6 +87,7 @@
                     <option value="Intermediate">Intermediate</option>
                     <option value="Advanced">Advanced</option>
                 </select>
+                <input type="file" name="image">
                 <span class="error level-error">* </span>
 
                 <div class="modal-actions">
