@@ -25,8 +25,7 @@
         $title = trim($_POST["title"]);
         $description = trim($_POST["description"]);
         $level = trim($_POST["level"]);
-        $file_name = time() . "_" . basename($_FILES["image"]["name"]);
-
+        $file_name = $_FILES["image"]['name'];
         $tempname = $_FILES['image']['tmp_name'];
         echo $tempname;
         $folder = '../uploads/'.$file_name;
@@ -36,12 +35,6 @@
             $isvalid = false;
         if(!in_array($_POST['level'],["Beginner","Intermediate","Advanced"]))
             $isvalid==false;
-            if (!empty($file_name)) {
-        if (!move_uploaded_file($tempname, $folder)) {
-            echo "Image upload failed!";
-            $isvalid = false;
-        }
-    }
         if ($isvalid) {
             $sql = "INSERT INTO courses (title, description, level,image)
             VALUES ('$title', '$description', '$level','$file_name')";

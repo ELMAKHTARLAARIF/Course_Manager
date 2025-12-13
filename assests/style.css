@@ -301,18 +301,16 @@ footer {
     width: 80%;
     height: 100%;
     margin: 0 auto;
-    display: flex;
-    flex-direction: column;
+
 }
 
 .course-sections h2 {
-    text-align: center;
     margin: 10px 0 20px;
+    font-size: 20px;
     color: var(--accent-2);
 }
 
 .sections-box {
-    
     display: grid;
     flex-wrap: wrap;
     width:100%;
@@ -424,7 +422,7 @@ a.back-link:hover {
     text-decoration: underline;
 }
 .add-section-save-btn {
-    width: 80px;
+    width:fit-content;
     height: 40px;
     background-color: #007bff;
     color: #fff;

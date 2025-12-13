@@ -80,7 +80,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             <div class="add-section-actions">
                 <a href="sections_by_course.php?id=<?= $course_id ?>" class="back-link"><- Back to Course Section</a> 
-                <button type="submit" class="add-section-save-btn">Save</button>
+                <button type="submit" class="add-section-save-btn">Save Changes</button>
             </div>
 
         </form>

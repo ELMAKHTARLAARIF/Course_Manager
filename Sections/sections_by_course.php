@@ -2,13 +2,18 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 require_once '../Infrastructure/config.php';
+$Nfound="";
+$found="";
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
     $cour_id = $_GET["id"];
     $sql = "SELECT * FROM sections WHERE course_id = $cour_id";
     $result = mysqli_query($conn, $sql);
-    if (!$result) {
+    if(!$result)
         die("Query failed: " . mysqli_error($conn));
-    }
+    if (mysqli_num_rows($result)==0)
+        $Nfound="No Sections Found";
+    else
+        $found="Cour Sections";
     $getData = "SELECT * FROM courses WHERE id = $cour_id";
     $dataCours = mysqli_query($conn, $getData);
     if (!$dataCours) {
@@ -36,12 +41,9 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     <?php require_once "../Infrastructure/header.php" ?>
     <div id="course-sections" class="course-sections">
         <div class="title-section-add-section-btn">
-            <?php if (empty($result))
-                echo "<h2>No Sections Found</h2>";
-            else {
-                echo "<h2>Cour Sections</h2>";
-            }
-
+            <?php
+            if(!$Nfound==""){echo "<h2>$Nfound</h2>";}
+             else{echo "<h2>$found</h2>";}
             ?>
             <a href="../Sections/sections_create.php?id=<?= $dataCours['id'] ?>" class="btn primary">+ Add Section</a>
         </div>
