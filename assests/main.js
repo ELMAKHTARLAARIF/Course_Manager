@@ -3,6 +3,7 @@ const descEror = document.querySelector(".desc-error");
 const levelError = document.querySelector(".level-error");
 function openModal() {
     document.getElementById("modal-overlay").classList.add("show");
+    console.log()
     titleEror.textContent = "*";
     descEror.textContent = "*"
     levelError.textContent = "*";
@@ -14,7 +15,6 @@ function closeModal() {
 
 const form = document.getElementById("courseForm");
 const saveBtn = document.getElementById("add-course-form");
-
 saveBtn.addEventListener("click", (e) => {
     e.preventDefault();
     let isValid = true;

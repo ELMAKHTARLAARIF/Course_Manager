@@ -182,8 +182,18 @@ body {
     min-height: 54px;
 }
 .cour-image{
-    width: 80px;
-    height: 80px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+.cour-image img{
+    width: 60%;
+    height: 150px;
+    border-radius: 10px;
+
 }
 .actions {
     margin-top: 18px;
@@ -440,4 +450,233 @@ a.back-link:hover {
     align-items: center;
     justify-content: space-between;
 
+}
+/* login start here  */
+.hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    max-width: 500px;
+    margin: auto;
+}
+
+.hero h1 {
+    font-size: 48px;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    width: 100%;
+    color: var(--accent-2);
+}
+
+.hero p {
+    font-size: 18px;
+    color: var(--muted);
+    margin-bottom: 30px;
+}
+
+.hero a {
+    display: inline-block;
+    padding: 14px 24px;
+    border-radius: var(--radius);
+    background: var(--actionsrface);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: var(--text);
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.hero a:hover {
+    border-color: var(--accent);
+}
+
+/* LOGIN FORM CARD */
+.auth-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.auth-card {
+    background: var(--glass);
+    padding: 40px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    width: 100%;
+    max-width: 380px;
+}
+
+.auth-card h2 {
+    text-align: center;
+    font-size: 26px;
+    margin-bottom: 25px;
+}
+
+.auth-card input {
+    width: 100%;
+    padding: 12px 14px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.08);
+    background: var(--actionsrface);
+    color: var(--text);
+    font-size: 15px;
+    outline: none;
+}
+
+.auth-card input::placeholder {
+    color: var(--muted);
+}
+
+.auth-card input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px rgba(124,58,237,0.25);
+}
+
+.auth-card button {
+    width: 100%;
+    padding: 13px;
+    margin-top: 10px;
+    border-radius: 12px;
+    border: none;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.auth-card button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(124,58,237,0.35);
+}
+
+.auth-card p {
+    margin-top: 20px;
+    font-size: 14px;
+    text-align: center;
+    color: var(--muted);
+}
+
+.auth-card p a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.auth-card p a:hover {
+    text-decoration: underline;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .hero {
+        max-width: 100%;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .auth-container {
+        margin-top: 20px;
+    }
+}
+/* register start here */
+/* ================= REGISTER PAGE ================= */
+.register-container {
+    max-width: 400px;
+    margin: 80px auto;
+    padding: 40px;
+    background: var(--glass);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    text-align: center;
+}
+
+.register-container h1 {
+    font-size: 32px;
+    color: var(--accent-2);
+    margin-bottom: 10px;
+}
+
+.register-container p {
+    font-size: 16px;
+    color: var(--muted);
+    margin-bottom: 30px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    margin-bottom: 6px;
+    font-size: 14px;
+    color: var(--muted);
+}
+
+.form-group input {
+    padding: 12px 14px;
+    border-radius: var(--radius);
+    border: 1px solid rgba(255,255,255,0.08);
+    background: var(--actionsrface);
+    color: var(--text);
+    font-size: 15px;
+    outline: none;
+    transition: 0.2s;
+}
+
+.form-group input::placeholder {
+    color: var(--muted);
+}
+
+.form-group input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px rgba(124,58,237,0.25);
+}
+
+.register-container button {
+    width: 100%;
+    padding: 14px;
+    border-radius: var(--radius);
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    color: #fff;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.register-container button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(124,58,237,0.35);
+}
+
+.footer-text {
+    margin-top: 20px;
+    font-size: 14px;
+    color: var(--muted);
+}
+
+.footer-text a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.footer-text a:hover {
+    text-decoration: underline;
+}
+
+/* RESPONSIVE */
+@media (max-width: 500px) {
+    .register-container {
+        margin: 40px 20px;
+        padding: 30px;
+    }
 }

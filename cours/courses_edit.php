@@ -5,7 +5,8 @@ $description = "";
 $level = "";
 $errormsg = "";
 $successmsg = "";
-
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 if ($_SERVER['REQUEST_METHOD'] === "GET") {
 
     if (!isset($_GET['id'])) {
@@ -34,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     $title = $_POST["title"];
     $description = $_POST["description"];
     $level = $_POST["level"];
-
+    $id = $_POST['id'];
     if (empty($title) || empty($description) || empty($level)) {
         $errormsg = "All fields are required!";
     } else {

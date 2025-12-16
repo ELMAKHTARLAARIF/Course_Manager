@@ -1,4 +1,4 @@
-CREATE DATABASE IF NOT EXISTS cours_manager;
+
 CREATE DATABASE cours_manager;
 use cours_manager;
 CREATE TABLE courses (
@@ -6,6 +6,7 @@ CREATE TABLE courses (
     title VARCHAR(255) NOT NULL,
     description TEXT NOT NULL,
     level ENUM('Beginner', 'Intermediate', 'Advanced') NOT NULL,
+    image VARCHAR(255),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
  CREATE TABLE sections (

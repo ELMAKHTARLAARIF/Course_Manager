@@ -1,12 +1,10 @@
 <?php
 require_once '../Infrastructure/config.php';
-
+var_dump($_SERVER);
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
-
     if (!isset($_GET['id'])) {
         die("No course ID provided.");
     }
-
     $id = $_GET['id']; 
     $sql = "DELETE FROM courses WHERE id = $id";
     $result = mysqli_query($conn, $sql);

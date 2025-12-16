@@ -11,8 +11,15 @@
 
 <body>
 
-    <?php require_once '../Infrastructure/header.php';
+    <?php
+    error_reporting(E_ALL);
+ini_set('display_errors', 1);
+    require_once '../Infrastructure/header.php';
     require_once '../Infrastructure/config.php';
+    if (!$conn) {
+        die("Connection failed: " . mysqli_connect_error());
+    }
+
     ?>
     <?php
     $isvalid = true;
@@ -20,39 +27,51 @@
     $title = "";
     $description = "";
     $level = "";
-
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $title = trim($_POST["title"]);
         $description = trim($_POST["description"]);
         $level = trim($_POST["level"]);
-        $file_name = $_FILES["image"]['name'];
-        $tempname = $_FILES['image']['tmp_name'];
-        echo $tempname;
-        $folder = '../uploads/'.$file_name;
+
         if (empty($title))
             $isvalid = false;
-        if (empty($description)) 
+        if (empty($description))
             $isvalid = false;
-        if(!in_array($_POST['level'],["Beginner","Intermediate","Advanced"]))
-            $isvalid==false;
-        if ($isvalid) {
-            $sql = "INSERT INTO courses (title, description, level,image)
+        if (!in_array($_POST['level'], ["Beginner", "Intermediate", "Advanced"]))
+            $isvalid = false;
+        if (isset($_FILES['image'])) {
+
+            $file_name = $_FILES['image']['name'];
+            $tempname  = $_FILES['image']['tmp_name'];
+            $folder    = '../uploads/' . basename($file_name);
+            move_uploaded_file($tempname, $folder);
+            if ($isvalid) {
+                $sql = "INSERT INTO courses (title, description, level,image)
             VALUES ('$title', '$description', '$level','$file_name')";
-            if (mysqli_query($conn, $sql)) {
-                header("Location: " . $_SERVER['PHP_SELF']);
-                exit();
-            } else {
-                $errors[] = "Database error: " . mysqli_error($conn);
-                $title = "";
-                $description = "";
-                $level = "";
+                if (mysqli_query($conn, $sql)) {
+                    echo "Error creating table: " . mysqli_error($conn);
+                } else {
+                    $title = "";
+                    $description = "";
+                    $level = "";
+                }
+                header("location: courses_create.php");
+            }
+        } else {
+            if ($isvalid) {
+                $sql = "INSERT INTO courses (title, description, level)
+            VALUES ('$title', '$description', '$level')";
+                if (mysqli_query($conn, $sql)) {
+                    echo "Error creating table: " . mysqli_error($conn);
+                } else {
+                    $title = "";
+                    $description = "";
+                    $level = "";
+                }
+                header("location: courses_create.php");
             }
         }
     }
-
     ?>
-
-
     <section class="container">
         <div class="top-bar">
             <h1>Courses</h1>
@@ -60,7 +79,16 @@
         </div>
 
         <div class="course-grid">
-            <?php require_once '../cours/courses_list.php'; ?>
+
+            <?php
+
+            if ($conn) {
+                require_once '../cours/courses_list.php';
+            } else {
+                echo "Query failed: ", mysqli_error($conn);
+            }
+
+            ?>
         </div>
     </section>
 
@@ -70,9 +98,9 @@
 
             <form method="POST" class="modal-form" id="courseForm" enctype="multipart/form-data">
                 <label>Course Title</label>
-                <input type="text" name="title" class="input" id="course-title"><span class="error title-error"  >*</span>
+                <input type="text" name="title" class="input" id="course-title"><span class="error title-error">*</span>
                 <label>Description</label>
-                <textarea name="description" rows="4" class="input" id="course-desc"></textarea><span class="error desc-error" >*</span>
+                <textarea name="description" rows="4" class="input" id="course-desc"></textarea><span class="error desc-error">*</span>
 
                 <label>Level</label>
                 <select name="level" id=level>
