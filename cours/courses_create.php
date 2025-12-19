@@ -12,14 +12,12 @@
 <body>
 
     <?php
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
     error_reporting(E_ALL);
-ini_set('display_errors', 1);
+    session_start();
     require_once '../Infrastructure/header.php';
     require_once '../Infrastructure/config.php';
-    if (!$conn) {
-        die("Connection failed: " . mysqli_connect_error());
-    }
-
     ?>
     <?php
     $isvalid = true;
@@ -31,7 +29,6 @@ ini_set('display_errors', 1);
         $title = trim($_POST["title"]);
         $description = trim($_POST["description"]);
         $level = trim($_POST["level"]);
-
         if (empty($title))
             $isvalid = false;
         if (empty($description))
@@ -39,22 +36,18 @@ ini_set('display_errors', 1);
         if (!in_array($_POST['level'], ["Beginner", "Intermediate", "Advanced"]))
             $isvalid = false;
         if (isset($_FILES['image'])) {
-
             $file_name = $_FILES['image']['name'];
             $tempname  = $_FILES['image']['tmp_name'];
-            $folder    = '../uploads/' . basename($file_name);
+            $folder    = '../uploads/' . time() . basename($file_name);
             move_uploaded_file($tempname, $folder);
             if ($isvalid) {
                 $sql = "INSERT INTO courses (title, description, level,image)
             VALUES ('$title', '$description', '$level','$file_name')";
                 if (mysqli_query($conn, $sql)) {
                     echo "Error creating table: " . mysqli_error($conn);
-                } else {
-                    $title = "";
-                    $description = "";
-                    $level = "";
                 }
                 header("location: courses_create.php");
+                exit;
             }
         } else {
             if ($isvalid) {
@@ -62,12 +55,9 @@ ini_set('display_errors', 1);
             VALUES ('$title', '$description', '$level')";
                 if (mysqli_query($conn, $sql)) {
                     echo "Error creating table: " . mysqli_error($conn);
-                } else {
-                    $title = "";
-                    $description = "";
-                    $level = "";
                 }
                 header("location: courses_create.php");
+                exit;
             }
         }
     }
@@ -77,7 +67,15 @@ ini_set('display_errors', 1);
             <h1>Courses</h1>
             <a class="btn primary" onclick="openModal()">+ Add Course</a>
         </div>
-
+        <div class="cour-exist" >
+             <?php
+                if (!empty($_SESSION['alreadyInscrepted'])) { ?>
+                <script src="../assests/exist.js"></script>
+            <?php
+                $_SESSION['alreadyInscrepted'] = "";
+                }
+            ?>
+        </div>
         <div class="course-grid">
 
             <?php

@@ -1,18 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../assests/style.css">
-  <title>Document</title>
-</head>
-
-<body>
   <?php
   error_reporting(E_ALL);
   ini_set('display_errors', 1);
-  require_once '../Infrastructure/header.php';
   require_once '../Infrastructure/config.php';
   $Name = "";
   $password = "";
@@ -29,34 +17,33 @@
     $successmsg = "";
 
     $reg_email = "/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/";
-    $reg_password = "/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/";
-    if (!empty($name)) {
+    $reg_password = "/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{4,}$/";
+    if (empty($name)) {
       $errormsg = "invalid name";
       $isValid = false;
     }
-    if (!preg_match($reg_email, $email)) {
-      $errormsg = "The email address '$email' is considered invalid according to the regex.";
-      $isValid = false;
-    }
+    // if (!preg_match($reg_email, $email)) {
+    //   $errormsg = "The email address '$email' is considered invalid according to the regex.";
+    //   $isValid = false;
+    // }
 
-    if (!preg_match($reg_password, $password)) {
-      $errormsg = "Password must be at least 8 characters long and include both letters and numbers.";
-      $isValid = false;
-    }
+    // if (!preg_match($reg_password, $password)) {
+    //   $errormsg = "Password must be at least 8 characters long and include both letters and numbers.";
+    //   $isValid = false;
+    // }
 
-    if ($confirmPassword != $password) {
-      $errormsg = "Please enter a correct confirm password";
-      $isValid = false;
-    }
+    // if ($confirmPassword != $password) {
+    //   $errormsg = "Please enter a correct confirm password";
+    //   $isValid = false;
+    // }
 
     if ($isValid) {
-      // $name = mysqli_real_escape_string($conn, $name);
-      // $email = mysqli_real_escape_string($conn, $email);
-      // $passwordHash = password_hash($password, PASSWORD_DEFAULT);
+      $name = mysqli_real_escape_string($conn, $name);
+      $email = mysqli_real_escape_string($conn, $email);
+      $passwordHash = password_hash($password, PASSWORD_DEFAULT);
 
       $sql = "INSERT INTO users (username, email, password_hash)
                 VALUES ('$name', '$email', '$passwordHash')";
-
       $result = mysqli_query($conn, $sql);
       if (!$result) {
         echo "Sorry, something went wrong.";
@@ -69,6 +56,18 @@
   }
 
   ?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../assests/style.css">
+  <title>Document</title>
+</head>
+
+<body>
+
   <div class="register-container">
     <h1>Create Account</h1>
     <p>Join us and start learning</p>

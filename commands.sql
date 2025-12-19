@@ -47,3 +47,14 @@ INSERT INTO sections (course_id, title, content, position, created_at) VALUES
 (10, 'Project Architecture Setup', 'Creating folders and planning the full-stack structure.', 1, NOW()),
 (11, 'Git Basics & Commands', 'Learning git init, git add, git commit, and more.', 1, NOW()),
 (12, 'Threats & Vulnerabilities', 'Common types of cyber attacks and system weaknesses.', 1, NOW());
+
+CREATE TABLE enrollments (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    course_id INT NOT NULL,
+    enrolled_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    status ENUM('active','completed','cancelled') DEFAULT 'active',
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+    FOREIGN KEY (course_id) REFERENCES courses(id) ON DELETE CASCADE,
+    UNIQUE (user_id, course_id)
+);

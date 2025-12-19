@@ -17,6 +17,7 @@ while ($row = mysqli_fetch_assoc($result)) {
         <p class="desc"><?= htmlspecialchars($row['description']) ?></p>
 
         <div class="actions">
+            <a href="../Inscriptions/enroll.php?id=<?= $row['id'] ?>" class="btn Registration">Registration</a>
             <a class="btn" href="../Sections/sections_by_course.php?id=<?= $row['id'] ?>">View Section</a>
             <a href="courses_edit.php?id=<?= $row['id'] ?>" class="btn edit">Edit</a>
             <a href="courses_delete.php?id=<?php echo $row['id'] ?>" class="btn delete">Delete</a>
