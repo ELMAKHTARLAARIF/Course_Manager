@@ -140,6 +140,7 @@ body {
 }
 
 .course-card {
+
     background: var(--btnrface);
     width: 100%;
     padding: 22px;
@@ -190,8 +191,8 @@ body {
     margin-bottom: 10px;
 }
 .cour-image img{
-    width: 60%;
-    height: 150px;
+    width: 400px;
+    height: 180px;
     border-radius: 10px;
 
 }
@@ -687,3 +688,101 @@ a.back-link:hover {
     padding: 0 0 30px 45%;
     margin-bottom: 10px;
 }
+/*Dashboard*/
+.page-title {
+  margin-bottom: 35px;
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--accent-2);
+}
+
+.grid-kpi {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+  margin-bottom: 50px;
+}
+
+.kpi-card {
+  background: var(--glass);
+  padding: 25px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.kpi-card p {
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.grid-tables {
+  display: grid;
+  gap: 40px;
+}
+
+.card {
+  background: var(--glass);
+  padding: 25px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.big-stat {
+  font-size: 36px;
+  font-weight: bold;
+  color: var(--accent);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+th, td {
+  padding: 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+th {
+  color: var(--accent-2);
+}
+
+.list li {
+  padding: 6px 0;
+  color: var(--muted);
+}
+        .logout-page {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+            gap: 20px;
+        }
+
+        .logout-page h1 {
+            color: var(--accent-2);
+            font-size: 36px;
+        }
+
+        .logout-page p {
+            color: var(--muted);
+            font-size: 16px;
+        }
+
+        .logout-page a {
+            padding: 12px 24px;
+            border-radius: var(--radius);
+            background: var(--accent);
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+
+        .logout-page a:hover {
+            background: #6325d0;
+        }

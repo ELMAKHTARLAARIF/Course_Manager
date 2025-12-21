@@ -34,6 +34,7 @@
 
 </html>
 <?php
+session_start();
 require_once '../Infrastructure/config.php';
 $email = "";
 $password = "";
@@ -45,10 +46,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $isValid = false;
     echo "Missing email or password.";
   } else {
-
     $email = trim($_POST['email']);
     $password = $_POST['password'];
-    
     $reg_email = "/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/";
     // $reg_password = "/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{4,}$/";
     // if (!preg_match($reg_email, $email)) {

@@ -48,7 +48,8 @@
       if (!$result) {
         echo "Sorry, something went wrong.";
       } else {
-        echo "Registration successful!";
+        header("location: ../courses_created.php");
+        exit;
       }
     } else {
       echo $errormsg;

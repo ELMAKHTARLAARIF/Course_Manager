@@ -4,8 +4,11 @@ ini_set('display_errors', 1);
 session_start();
 require_once '../Infrastructure/config.php';
 // var_dump($_SESSION['userId']);
-require_once '../Infrastructure/config.php';
 
+if (!isset($_SESSION['userId'])) {
+    header("Location: ../user/login.php");
+    exit;
+}
 $user_id = $_SESSION['userId'];
 
 $sql = "
