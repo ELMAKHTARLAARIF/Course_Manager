@@ -16,21 +16,21 @@
         <section class="grid-kpi">
             <div class="kpi-card">
                 <h4>Nombre Total de Cours</h4>
-                <p><?php require_once 'Total_Cours.php'?></p>
+                <p><?php require_once 'Total_Cours.php' ?></p>
             </div>
             <div class="kpi-card">
                 <h4>Total des Utilisateurs</h4>
-                <p><?php require_once 'Total_Users.php'?></p>
+                <p><?php require_once 'Total_Users.php' ?></p>
             </div>
 
             <div class="kpi-card">
                 <h4>Total des Inscriptions</h4>
-                <p><?php  require_once 'Total_Inscriptions_cours.php'?></p>
+                <p><?php require_once 'Total_Inscriptions_cours.php' ?></p>
             </div>
 
             <div class="kpi-card">
                 <h4>Cours le Plus Populaire</h4>
-                <p><?php require_once 'Cours_Populaire.php'?></p>
+                <p><?php require_once 'Cours_Populaire.php' ?></p>
             </div>
         </section>
 
@@ -89,21 +89,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Salma</td>
-                            <td>Laravel Pro</td>
-                            <td>2025-04-12</td>
-                        </tr>
-                        <tr>
-                            <td>Omar</td>
-                            <td>SQL Analytics</td>
-                            <td>2025-04-11</td>
-                        </tr>
-                        <tr>
-                            <td>Nora</td>
-                            <td>Vue.js</td>
-                            <td>2025-04-10</td>
-                        </tr>
+                        <?php require_once '../Dashboard/Dernières_Inscriptions.php' ?>
                     </tbody>
                 </table>
             </div>
